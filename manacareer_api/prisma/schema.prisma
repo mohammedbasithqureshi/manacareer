@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+}
+model Opportunity {
+  id          String   @id @default(uuid())
+  title       String
+  org         String
+  type        String
+  district    String
+  location    String
+  money       String
+  deadline    String
+  urgent      Boolean  @default(false)
+  about       String
+  eligibility String[]
+  applyInfo   String
+  createdAt   DateTime @default(now())
+}
+model Profile {
+  id                String   @id @default(uuid())
+  firebaseUid       String   @unique
+  email             String
+  fullName          String
+  photoUrl          String?
+  phone             String?
+  dateOfBirth       String?
+  gender            String?
+  district          String?
+  mandal            String?
+  village           String?
+  collegeName       String?
+  collegeOther      String?
+  branch            String?
+  yearOfPassing     String?
+  cgpa              String?
+  currentStatus     String?
+  skills            String[]
+  resumeUrl         String?
+  linkedinUrl       String?
+  desiredRole       String?
+  expectedSalary    String?
+  profileComplete   Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
